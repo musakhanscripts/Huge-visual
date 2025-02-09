@@ -1,0 +1,31 @@
+-- Assuming the button and egg are GUI elements inside StarterGui or somewhere accessible
+local button = script.Parent:WaitForChild("HatchButton") -- The button the player clicks
+local egg = script.Parent:WaitForChild("CupidEgg") -- The egg object
+local player = game.Players.LocalPlayer
+local hugeValentineBearId = "Huge Valentine Bear" -- You should set an actual ID or model for the huge bear
+local notificationFrame = script.Parent:WaitForChild("NotificationFrame") -- The UI frame for displaying the result
+
+-- Function to simulate hatching
+local function hatchEgg()
+    -- Simulate a random chance of getting a "Huge Valentine Bear" or a regular item
+    local isHugeValentineBear = math.random(1, 100) <= 5 -- 5% chance of getting the Huge Valentine Bear
+
+    if isHugeValentineBear then
+        -- Show a notification or display what would happen if the player got the Huge Valentine Bear
+        notificationFrame.Visible = true
+        notificationFrame.TextLabel.Text = "Congrats! You would have gotten a Huge Valentine Bear!"
+        
+        -- Add additional logic to give the Huge Valentine Bear to the player if you want
+        -- For example, adding it to the player's inventory, etc.
+    else
+        -- Display a regular egg hatch message or result
+        notificationFrame.Visible = true
+        notificationFrame.TextLabel.Text = "You hatched the Cupid Egg!"
+    end
+end
+
+-- Button click detection
+button.MouseButton1Click:Connect(function()
+    -- Call the hatch function when the button is clicked
+    hatchEgg()
+end)
